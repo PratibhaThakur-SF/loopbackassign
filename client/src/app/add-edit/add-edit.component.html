@@ -1,0 +1,64 @@
+<h2 *ngIf="isAddMode">ADD USER</h2>
+<h2 *ngIf="!isAddMode">EDIT USER</h2>
+<form [formGroup]="Form" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      FirstName:
+      <input formControlName="firstName" name="firstName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      MiddleName:
+      <input formControlName="middleName" name="middleName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      LastName:
+      <input formControlName="lastName" name="lastName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" name="email" />
+    </label>
+  </div>
+  <div>
+    <label>
+      phone Number:
+      <input type="number" formControlName="phoneNumber" name="phoneNumber" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Address
+      <input formControlName="address" name="address" />
+    </label>
+  </div>
+  <div>
+    <label>
+      CUSTOMER
+      <select formControlName="customerId">
+        <option *ngFor="let customer of customerList" [value]="customer.id">
+          {{ customer.name }}
+        </option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>
+      Role:
+      <select formControlName="roleName">
+        <option *ngFor="let role of roleList" [value]="role.name">
+          {{ role.name }}
+        </option>
+      </select>
+    </label>
+  </div>
+  <button type="submit">SAVE</button>
+  <button routerLink="/users">Cancel</button>
+</form>
+
