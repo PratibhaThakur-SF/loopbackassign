@@ -1,0 +1,11 @@
+{
+  "ids": {
+    "User": 3
+  },
+  "models": {
+    "User": {
+      "1": "{\"name\":\"pratibha\",\"id\":1}",
+      "2": "{\"name\":\"prati\",\"id\":2}"
+    }
+  }
+}
