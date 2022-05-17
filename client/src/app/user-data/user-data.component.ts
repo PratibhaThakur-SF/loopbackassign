@@ -4,6 +4,7 @@ import { User } from 'src/datasource/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from 'src/datasource/customer.model';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-user-data',
   templateUrl: './user-data.component.html',
@@ -28,12 +29,13 @@ export class UserDataComponent implements OnInit {
   user: any;
   userId: number[] = [];
   customerId: number;
+  subscription: Subscription;
   constructor(private UserService: UsersDataService,private customerService: CustomerService, private router: Router,private route: ActivatedRoute,) {}
 
   ngOnInit(): void {    
     this.id = +this.route.snapshot.params['customerId'];
     if(!this.id){
-      this.UserService.getUsers().subscribe((res) => {
+      this.subscription = this.UserService.getUsers().subscribe((res) => {
         this.users = res;
         console.log(this.users);
       });
@@ -65,5 +67,8 @@ export class UserDataComponent implements OnInit {
   update(user) {
     this.UserService.setter(user);
     this.router.navigate(['/users/edit/', user.id]);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Customer } from 'src/datasource/customer.model';
 import { User } from 'src/datasource/user.model';
@@ -20,13 +21,11 @@ export class CustomersComponent implements OnInit {
   customer: Customer[];
   customers: Customer[] = [];
   id: number;
+  customersObservable: Observable<Customer[]>
   constructor(private customerService: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
-    this.customerService.getCustomers().subscribe((res) => {
-      this.customers = res;
-      console.log(this.customers);
-    });
+    this.customersObservable = this.customerService.getCustomers();
   }
 
   delete(id: number) {

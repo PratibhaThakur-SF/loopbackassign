@@ -5,7 +5,7 @@
     <th>Actions</th>
   </tr>
   
-  <tr *ngFor="let customer of customers">
+  <tr *ngFor="let customer of customersObservable | async">
 
     <td>
       {{customer.name}}
