@@ -1,0 +1,35 @@
+<button><a [routerLink]="['/users/add']">ADD NEW USER</a></button>
+<table [border]="1">
+  <tr>
+    <th *ngFor="let col of displayColumns">{{ col }}</th>
+    <th>Actions</th>
+  </tr>
+  
+  <tr *ngFor="let user of users">
+
+    <td>
+      {{user.firstName}}
+    </td>
+    <td>
+      {{user.middleName}}
+    </td>
+    <td>
+      {{user.lastName}}
+    </td>
+    <td>
+      {{user.email}}
+    </td>
+    <td>
+      {{user.phoneNumber}}
+    </td>
+    <td>
+      {{user.address}}
+    </td>
+    <td>{{user.roleName}}</td>
+    <td>{{user.customer.name}}</td>
+    <td>
+      <button (click)="update(user)">Edit</button>
+      <button type="button" (click)="deleteUser(user.id)">Delete</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,26 @@
+<h2 *ngIf="isAddMode">add customer</h2>
+<h2 *ngIf="!isAddMode">edit customer</h2>
+<form [formGroup]="Form" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Name:
+      <input formControlName="name" name="name" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Website:
+      <input formControlName="website" name="website" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Address:
+      <input formControlName="address" name="address" />
+    </label>
+  </div>
+  
+  <button type="submit">SAVE</button>
+  <button >Cancel</button>
+</form>
+

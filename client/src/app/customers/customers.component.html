@@ -1,0 +1,26 @@
+<button [routerLink]="['/customers/add']">ADD NEW Customer</button>
+<table [border]="1">
+  <tr>
+    <th *ngFor="let col of displayColumns">{{ col }}</th>
+    <th>Actions</th>
+  </tr>
+  
+  <tr *ngFor="let customer of customersObservable | async">
+
+    <td>
+      {{customer.name}}
+    </td>
+    <td>
+      {{customer.website}}
+    </td>
+    <td>
+      {{customer.address}}
+    </td>
+    
+    <td>
+      <button (click)="update(customer)">Edit</button>
+      <button (click)="delete(customer.id)">Delete</button>
+      <button (click)="showUsers(customer.id)">Show users</button>
+    </td>
+  </tr>
+</table>
